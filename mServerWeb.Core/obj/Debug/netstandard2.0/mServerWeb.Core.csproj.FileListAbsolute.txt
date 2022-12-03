@@ -1,0 +1,10 @@
+E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\bin\Debug\netstandard2.0\mServerWeb.Core.deps.json
+E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\bin\Debug\netstandard2.0\mServerWeb.Core.dll
+E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\bin\Debug\netstandard2.0\mServerWeb.Core.pdb
+E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.csproj.AssemblyReference.cache
+E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.GeneratedMSBuildEditorConfig.editorconfig
+E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.AssemblyInfoInputs.cache
+E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.AssemblyInfo.cs
+E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.csproj.CoreCompileInputs.cache
+E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.dll
+E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.pdb
