@@ -56,5 +56,29 @@ namespace mServerWeb.Core.Services
                 throw ex;
             }
         }
+
+        public string GetCampaignDetails(string campaignId)
+        {
+            try
+            {
+                string jdata = "\"{\\\"id\\\":\\\"4d3601ed-c632-4979-ae22-43854ef4ffaf\\\",\\\"referenceId\\\":\\\"customer-defined-identifier\\\",\\\"type\\\":\\\"TEN_DIGIT_LONG_CODE\\\",\\\"name\\\":\\\"ExamplePromo\\\",\\\"createdDate\\\":\\\"2019-08-24T14:15:22Z\\\",\\\"lastModifiedDate\\\":\\\"2019-08-24T14:15:22Z\\\",\\\"numberKeys\\\":[\\\"D79C1785A82A2BC6FC0B867DCD055215\\\"],\\\"brandId\\\":\\\"a0c63335-f841-4d43-9ef8-e0765a233f29\\\",\\\"confirmationMessage\\\":\\\"Examplepromotional-marketing.Msg&dataratesmayapply.ReplyHELPforhelp,STOPtocancel.\\\",\\\"customerCarePhone\\\":\\\"18889997777\\\",\\\"customerCareEmail\\\":\\\"examples@example.com\\\",\\\"exampleMessages\\\":[\\\"Comeintodayandget10%OFFtoday!\\\"],\\\"helpMessage\\\":\\\"Examplepromotional-marketing:Helpattextsupport@example.comor18889997777.Msg&dataratesmayapply.ReplySTOPtocancel.\\\",\\\"lowVolume\\\":false,\\\"messageTypes\\\":[\\\"sms\\\",\\\"mms\\\"],\\\"programSummary\\\":\\\"Amixofpromotionalandinformationalmessaging.\\\",\\\"stopMessage\\\":\\\"Examplepromotional-marketing:Youhavebeenunsubscribed,nomoremessageswillbesent.\\\",\\\"termsAndConditionsUrl\\\":\\\"https://www.example.com/terms-and-conditions\\\",\\\"useCase\\\":\\\"PROMOTIONAL_MARKETING\\\",\\\"optIns\\\":{\\\"keyword\\\":{\\\"callToAction\\\":\\\"TextMESSAGEtosubscribe\\\",\\\"keywords\\\":[\\\"MESSAGE\\\"],\\\"type\\\":\\\"keyword\\\"}}}\"";
+                return jdata;
+                var client = new RestClient("https://{baseUrl}/number-registration/1/campaigns/" + campaignId);
+                var request = new RestRequest("", Method.Get);
+                request.AddHeader("Authorization", "{authorization}");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("Accept", "application/json");
+                //var body = JsonConvert.SerializeObject(req);
+                //request.AddParameter("application/json", body, ParameterType.RequestBody);
+                var response = client.Execute(request);
+                Console.WriteLine(response.Content);
+                //Root resObj = JsonConvert.DeserializeObject<Root>(response.Content);
+                //return resObj;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

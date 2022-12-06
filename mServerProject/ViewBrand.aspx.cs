@@ -16,8 +16,8 @@ namespace mServerProject
 {
     public partial class ViewBrand : System.Web.UI.Page
     {
-        private IBrandService brandService;
-        private IBrandService _brandService
+        private static IBrandService brandService;
+        private static IBrandService _brandService
         {
             get { return brandService ?? (brandService = new BrandService()); }
         }
@@ -33,7 +33,6 @@ namespace mServerProject
         [WebMethod]
         public static string GetBrands()
         {
-            BrandService _brandService = new BrandService();
             string resbrd = _brandService.GetBrandsJson();
             return resbrd;
         }
@@ -88,16 +87,6 @@ namespace mServerProject
                 table.Rows.Add(values);
             }
             return table;
-        }
-
-        protected void lbEdit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void lbDelete_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

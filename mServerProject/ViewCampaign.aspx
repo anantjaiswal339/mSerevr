@@ -13,26 +13,13 @@
 
             <div class="col-md-12">
                 <div class="pull-right">
-                    <a href="/CreateBrand" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add Brand</a>
+                    <a href="/CampaignRegistration" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add Campaign</a>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <br>
                 <div class="table-responsive">
-                    <%--<table id="recordNav" class="table table-bordred table-striped table-hover">
-                        <tr>
-                            <td nowrap="nowrap"><a href="javascript:void(0);" onclick="moveFirstPage()" id="firstPage">
-                                <img src="/Content/first.png" alt="" /></a></td>
-                            <td nowrap="nowrap"><a href="javascript:void(0);" onclick="movePreviousPage()" id="previousPage">
-                                <img src="/Content/previous.png" alt="" /></a></td>
-                            <td id="pageTitle"></td>
-                            <td nowrap="nowrap"><a href="javascript:void(0);" onclick="moveNextPage()" id="nextPage">
-                                <img src="/Content/next.png" alt="" /></a></td>
-                            <td nowrap="nowrap"><a href="javascript:void(0);" onclick="moveLastPage()" id="lastPage">
-                                <img src="/Content/last.png" alt="" /></a></td>
-                        </tr>
-                    </table>--%>
                     <table class="table table-bordred table-striped table-hover">
                         <thead>
                             <tr>
@@ -43,8 +30,6 @@
                                 <th nowrap="nowrap">Program Summary</th>
                                 <th nowrap="nowrap">Stop Message</th>
                                 <th nowrap="nowrap">View</th>
-                                <%--<th nowrap="nowrap">Campaigns</th>
-                                <th nowrap="nowrap">Status</th>--%>
                             </tr>
                         </thead>
                         <tbody id="contentContainer"></tbody>
@@ -75,7 +60,7 @@
 
         function GetCampaignDetails(camid) {
             sessionStorage.setItem("camid", camid);
-            window.location = "/ViewBrandDetails";
+            window.location = "/ViewCampaignDetails";
         }
 
     </script>
@@ -162,10 +147,9 @@
                     else {
                         strdata += "<tr><td colspan='2'>No data found.</td></tr>";
                     }
-                    console.log(jsondata);
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
+                    console.error(textStatus, errorThrown);
                 }
             });
         }

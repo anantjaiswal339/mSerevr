@@ -14,8 +14,8 @@ namespace mServerProject
 {
     public partial class ViewBrandDetails : System.Web.UI.Page
     {
-        private IBrandService brandService;
-        private IBrandService _brandService
+        private static IBrandService brandService;
+        private static IBrandService _brandService
         {
             get { return brandService ?? (brandService = new BrandService()); }
         }
@@ -33,28 +33,12 @@ namespace mServerProject
         {
             try
             {
-                BrandService _brandService = new BrandService();
                 string resbrd = _brandService.GetBrandDetails(brandId);
-                //dynamic test = JsonConvert.DeserializeObject<dynamic>(resbrd);
-                //Result brddt = JsonConvert.DeserializeObject<Result>(test);
                 return resbrd;
             }
             catch (Exception ex)
             {
                 return ex.Message;
-            }
-        }
-
-        private void BindBrandDetails1(string brandId)
-        {
-            try
-            {
-                //Root resbrd = _brandService.GetBrandDetails(brandId);
-                //lblcmpname.Text = "";
-            }
-            catch (Exception ex)
-            {
-                throw;
             }
         }
     }

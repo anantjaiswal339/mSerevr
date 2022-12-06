@@ -20,19 +20,6 @@
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <br>
                 <div class="table-responsive">
-                    <%--<table id="recordNav" class="table table-bordred table-striped table-hover">
-                        <tr>
-                            <td nowrap="nowrap"><a href="javascript:void(0);" onclick="moveFirstPage()" id="firstPage">
-                                <img src="/Content/first.png" alt="" /></a></td>
-                            <td nowrap="nowrap"><a href="javascript:void(0);" onclick="movePreviousPage()" id="previousPage">
-                                <img src="/Content/previous.png" alt="" /></a></td>
-                            <td id="pageTitle"></td>
-                            <td nowrap="nowrap"><a href="javascript:void(0);" onclick="moveNextPage()" id="nextPage">
-                                <img src="/Content/next.png" alt="" /></a></td>
-                            <td nowrap="nowrap"><a href="javascript:void(0);" onclick="moveLastPage()" id="lastPage">
-                                <img src="/Content/last.png" alt="" /></a></td>
-                        </tr>
-                    </table>--%>
                     <table class="table table-bordred table-striped table-hover">
                         <thead>
                             <tr>
@@ -43,42 +30,10 @@
                                 <th nowrap="nowrap">Support Email</th>
                                 <th nowrap="nowrap">Created On</th>
                                 <th nowrap="nowrap">View</th>
-                                <%--<th nowrap="nowrap">Campaigns</th>
-                                <th nowrap="nowrap">Status</th>--%>
                             </tr>
                         </thead>
                         <tbody id="contentContainer"></tbody>
                     </table>
-                    <%--<table id="mytable" class="table table-bordred table-striped">
-                        <thead>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Contact</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Mohsin</td>
-                                <td>Irshad</td>
-                                <td>CB 106/107 Street # 11 Wah Cantt Islamabad Pakistan</td>
-                                <td>isometric.mohsin@gmail.com</td>
-                                <td>+923335586757</td>
-                                <td>
-                                    <p data-placement="top" data-toggle="tooltip" title="Edit">
-                                        <button class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal" data-target="#edit"><span class="glyphicon glyphicon-pencil"></span></button>
-                                    </p>
-                                </td>
-                                <td>
-                                    <p data-placement="top" data-toggle="tooltip" title="Delete">
-                                        <button class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal" data-target="#delete"><span class="glyphicon glyphicon-trash"></span></button>
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>--%>
                     <div class="clearfix"></div>
                     <ul class="pagination pull-right" style="display: none">
                         <li class="disabled"><a href="#"><span class="glyphicon glyphicon-chevron-left"></span></a></li>

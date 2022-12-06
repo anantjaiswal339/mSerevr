@@ -7,5 +7,6 @@ namespace mServerWeb.Core.Services.Interfaces
     {
         CampaignResponse AddCampaign(CampaignRequest req);
         string GetCampaignJson();
+        string GetCampaignDetails(string campaignId);
     }
 }

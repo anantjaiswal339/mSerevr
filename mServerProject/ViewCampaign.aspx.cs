@@ -12,10 +12,10 @@ namespace mServerProject
 {
     public partial class ViewCampaign : System.Web.UI.Page
     {
-        private IBrandService brandService;
-        private IBrandService _brandService
+        private static ICampaignService campaignService;
+        private static ICampaignService _campaignService
         {
-            get { return brandService ?? (brandService = new BrandService()); }
+            get { return campaignService ?? (campaignService = new CampaignService()); }
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,8 +28,7 @@ namespace mServerProject
         [WebMethod]
         public static string GetCampaign()
         {
-            CampaignService _CampaignService = new CampaignService();
-            string resbrd = _CampaignService.GetCampaignJson();
+            string resbrd = _campaignService.GetCampaignJson();
             return resbrd;
         }
     }
