@@ -190,6 +190,7 @@
                 </div>
                 <div class="text-right">
                     <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
+                    <a href="/ViewBrand" class="btn btn-danger">Cancel</a>
                 </div>
             </div>
 

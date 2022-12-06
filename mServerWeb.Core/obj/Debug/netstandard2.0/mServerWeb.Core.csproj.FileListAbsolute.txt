@@ -8,3 +8,43 @@ E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\
 E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.csproj.CoreCompileInputs.cache
 E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.dll
 E:\PROJECT\Main Project\Danny\Projects\mServerProject\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.pdb
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\mServerWeb.Core.deps.json
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\mServerWeb.Core.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\mServerWeb.Core.pdb
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Web.Services.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.EnterpriseServices.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Configuration.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Design.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.DirectoryServices.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Runtime.Remoting.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Security.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Windows.Forms.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Data.OracleClient.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\Accessibility.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Drawing.Design.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Web.RegularExpressions.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Runtime.Serialization.Formatters.Soap.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Deployment.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Web.Services.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.EnterpriseServices.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Configuration.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Design.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.DirectoryServices.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Runtime.Remoting.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Security.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Windows.Forms.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Data.OracleClient.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\Accessibility.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Drawing.Design.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Web.RegularExpressions.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Runtime.Serialization.Formatters.Soap.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.Deployment.xml
+D:\Projects\mSerevr\mServer\mServerWeb.Core\bin\Debug\netstandard2.0\System.EnterpriseServices.Wrapper.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.csproj.AssemblyReference.cache
+D:\Projects\mSerevr\mServer\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\mSerevr\mServer\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.AssemblyInfoInputs.cache
+D:\Projects\mSerevr\mServer\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.AssemblyInfo.cs
+D:\Projects\mSerevr\mServer\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.csproj.CoreCompileInputs.cache
+D:\Projects\mSerevr\mServer\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.csproj.CopyComplete
+D:\Projects\mSerevr\mServer\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.dll
+D:\Projects\mSerevr\mServer\mServerWeb.Core\obj\Debug\netstandard2.0\mServerWeb.Core.pdb

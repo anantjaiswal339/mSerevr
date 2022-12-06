@@ -6,5 +6,6 @@ namespace mServerWeb.Core.Services.Interfaces
     public interface ICampaignService
     {
         CampaignResponse AddCampaign(CampaignRequest req);
+        string GetCampaignJson();
     }
 }

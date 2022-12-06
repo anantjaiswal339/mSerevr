@@ -8,5 +8,10 @@ namespace mServerWeb.Core.Services.Interfaces
     public interface IBrandService
     {
         BrandResponse AddBrand(BrandRequest req);
+        //BrandsList GetBrands();
+        Root GetBrands();
+        string GetBrandsJson();
+        string GetBrandDetails(string brandId);
+        //Result BindBrandDetails(string brandId);
     }
 }
