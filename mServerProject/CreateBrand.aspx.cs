@@ -55,7 +55,7 @@ namespace mServerProject
                 };
 
                 var response = _brandService.AddBrand(req, url, auth);
-                if (response.StatusCode == 200)
+                if (response.StatusCode == 201)
                     Response.Redirect("Brands");
 
             }

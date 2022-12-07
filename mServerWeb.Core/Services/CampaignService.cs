@@ -18,8 +18,8 @@ namespace mServerWeb.Core.Services
             try
 			{
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("https://lz6wnj.api.infobip.com");
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", "b3accc83fd5f003e979dff7f5e55071d-d8d904be-ae10-4ffe-aca5-6fb361c52702");
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", auth);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 JsonConvert.DefaultSettings = () => new JsonSerializerSettings

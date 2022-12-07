@@ -42,6 +42,15 @@ namespace mServerProject
 
                     ddlBrand.Items.Insert(0, new ListItem("--Select Brand--", ""));
                 }
+
+                List<NumbersModel> numbers = new List<NumbersModel>();
+                numbers.Add(new NumbersModel { Number = "447860099299", NumberKey = "1AD64938DE25A3818114CD5E15DB817E" });
+                numbers.Add(new NumbersModel { Number = "447491163443", NumberKey = "3CA99AB3B566AFEC74FB98187BDE0B8F" });
+
+                lstNumbers.DataSource = numbers;
+                lstNumbers.DataValueField = "NumberKey";
+                lstNumbers.DataTextField = "Number";
+                lstNumbers.DataBind();
             }
         }
 
@@ -54,14 +63,21 @@ namespace mServerProject
                     exampleMessage.Add(txtSampleMessage.Text);
 
                 var messageType = new List<string>();
+                var numbersList = new List<string>();
                 if (lblMessageType.Items.Count > 0)
                 {
-                    foreach (var item in lblMessageType.Items)
+                    foreach (ListItem item in lblMessageType.Items)
                     {
-                        messageType.Add(item.ToString());
+                        if (item.Selected)
+                            messageType.Add(item.Value);
                     }
                 }
 
+                foreach (ListItem item in lstNumbers.Items)
+                {
+                    if (item.Selected)
+                        numbersList.Add(item.Value);
+                }
                 var optIns = new OptIns();
                 if (rblOptIn.Text == "Keyword")
                 {
@@ -90,13 +106,13 @@ namespace mServerProject
                     optIns.Web = web;
                 }
 
-                string vasId = "VAS010";
+                string vasId = "VAS011";
                 CampaignRequest req = new CampaignRequest
                 {
                     Name = txtName.Text,
                     ReferenceId = vasId,
                     Type = "TEN_DIGIT_LONG_CODE",
-                    NumberKeys = new List<string>() { "D79C1785A82A2BC6FC0B867DCD055215" },
+                    NumberKeys = numbersList,
                     BrandId = ddlBrand.Text,
                     ConfirmationMessage = txtConfirmationMessage.Text,
                     CustomerCarePhone = txtSupportNumber.Text,
@@ -112,8 +128,9 @@ namespace mServerProject
                     OptIns = optIns
                 };
 
-                var res = _campaignService.AddCampaign(req, url , auth);
-
+                var response = _campaignService.AddCampaign(req, url , auth);
+                if (response.StatusCode == 201)
+                    Response.Redirect("Campaigns");
             }
             catch (Exception ex)
             {

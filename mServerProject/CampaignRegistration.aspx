@@ -205,8 +205,15 @@
 
                                         <div class="form-group col-md-6 col-sm-6">
                                             <label for="years">Message Type *</label>
-                                            <asp:DropDownList></asp:DropDownList>
+                                            <asp:DropDownList ></asp:DropDownList>
                                             <asp:ListBox runat="server" ID="lblMessageType" SelectionMode="multiple" CssClass="form-control">
+                                                <asp:ListItem Text="SMS" Value="SMS" />
+                                                <asp:ListItem Text="MMS" Value="MMS" />
+                                            </asp:ListBox>
+                                        </div>
+                                         <div class="form-group col-md-6 col-sm-6">
+                                            <label for="years">Numbers *</label>                                            
+                                            <asp:ListBox runat="server" ID="lstNumbers" SelectionMode="multiple" CssClass="form-control">
                                                 <asp:ListItem Text="SMS" Value="SMS" />
                                                 <asp:ListItem Text="MMS" Value="MMS" />
                                             </asp:ListBox>

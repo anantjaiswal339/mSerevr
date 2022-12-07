@@ -81,8 +81,10 @@
                         var jsondata = data.d.Data;
                         if (jsondata.results != null && jsondata.results != undefined && jsondata.results != "") {
                             $("tbody#contentContainer").find("tr").remove().end();
-                            strdata += "<tr>";
-                            for (let i = 0; i < jsondata.results.length; i++) {
+                            
+                            for (let i = 0; i < jsondata.results.length; i++)
+                            {
+                                strdata += "<tr>";
                                 strdata += "<td>" + jsondata.results[i].name + "</td>";
                                 strdata += "<td>" + jsondata.results[i].legalName + "</td>";
                                 strdata += "<td>" + jsondata.results[i].type + "</td>";
@@ -90,8 +92,8 @@
                                 strdata += "<td>" + jsondata.results[i].supportEmail + "</td>";
                                 strdata += "<td>" + new Date(parseInt(jsondata.results[i].createdDate.substr(6))).toDateString(); + "</td>";
                                 strdata += "<td><a class='btn btn-primary btn-xs' id='lnkbtnview' href='javascript:void(0)' onClick='GetBrandDetails(`" + jsondata.results[i].id + "`)'><span class='glyphicon glyphicon-eye'></span>&nbsp;View</a></td>";
-                            }
-                            strdata += "</tr>";
+                                strdata += "</tr>";
+                            }                            
                             $("#contentContainer").html(strdata);
                         }
                     }

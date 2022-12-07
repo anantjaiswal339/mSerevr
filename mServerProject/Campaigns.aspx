@@ -54,11 +54,13 @@
 
     <script type="text/javascript">
 
-        $(document).ready(function () {
+        $(document).ready(function ()
+        {
             //GetCampaignDetails();
         });
 
-        function GetCampaignDetails(camid) {
+        function GetCampaignDetails(camid)
+        {
             sessionStorage.setItem("camid", camid);
             window.location = "/ViewCampaignDetails";
         }
@@ -73,37 +75,46 @@
         var startItemIndex = 0;
         var itemsToDisplay = 0;
 
-        function PaginateSetPageObjects() {
+        function PaginateSetPageObjects()
+        {
             $('#pageTitle').text('Page ' + (currentPageIndex + 1) + ' of ' + pageCount);
 
-            if (pageCount <= 1) {
+            if (pageCount <= 1)
+            {
                 $('#nextPage').hide();
                 $('#previousPage').hide();
                 $('#lastPage').hide();
                 $('#firstPage').hide();
-            } else {
+            } else
+            {
                 $('#nextPage').show();
                 $('#previousPage').show();
                 $('#lastPage').show();
                 $('#firstPage').show();
 
-                if (currentPageIndex == 0) {
+                if (currentPageIndex == 0)
+                {
                     $('#previousPage').hide();
                     $('#firstPage').hide();
-                } else if (currentPageIndex == (pageCount - 1)) {
+                } else if (currentPageIndex == (pageCount - 1))
+                {
                     $('#nextPage').hide();
                     $('#lastPage').hide();
                 }
             }
         }
 
-        function PaginateCalculatePageIndexes(length) {
+        function PaginateCalculatePageIndexes(length)
+        {
             pageCount = 1;
 
-            if (length > pageSize) {
-                if (length / pageSize > parseInt(length / pageSize)) {
+            if (length > pageSize)
+            {
+                if (length / pageSize > parseInt(length / pageSize))
+                {
                     pageCount = parseInt(length / pageSize) + 1;
-                } else {
+                } else
+                {
                     pageCount = length / pageSize;
                 }
             }
@@ -111,12 +122,14 @@
             var remainingItems = length - startItemIndex;
             itemsToDisplay = pageSize + startItemIndex;
 
-            if (remainingItems < pageSize) {
+            if (remainingItems < pageSize)
+            {
                 itemsToDisplay = remainingItems + startItemIndex;
             }
         }
 
-        function displayObjects() {
+        function displayObjects()
+        {
 
             var strdata = "";
 
@@ -125,13 +138,19 @@
                 url: '/Campaigns.aspx/GetCampaign',
                 data: {},
                 contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if (data != undefined) {
-                        var jsondata = JSON.parse(JSON.parse(data.d));
-                        if (jsondata.results != null && jsondata.results != undefined && jsondata.results != "") {
+                success: function (data)
+                {
+                    debugger
+                    if (data.d.StatusCode == 200)
+                    {
+                        var jsondata = data.d.Data;
+                        if (jsondata.results != null && jsondata.results != undefined && jsondata.results != "")
+                        {
                             $("tbody#contentContainer").find("tr").remove().end();
-                            strdata += "<tr>";
-                            for (let i = 0; i < jsondata.results.length; i++) {
+                          
+                            for (let i = 0; i < jsondata.results.length; i++)
+                            {
+                                strdata += "<tr>";
                                 strdata += "<td>" + jsondata.results[i].name + "</td>";
                                 strdata += "<td>" + jsondata.results[i].type + "</td>";
                                 strdata += "<td>" + jsondata.results[i].confirmationMessage + "</td>";
@@ -139,16 +158,19 @@
                                 strdata += "<td>" + jsondata.results[i].programSummary + "</td>";
                                 strdata += "<td>" + jsondata.results[i].stopMessage + "</td>";
                                 strdata += "<td><a class='btn btn-primary btn-xs' id='lnkbtnview' href='javascript:void(0)' onClick='GetCampaignDetails(`" + jsondata.results[i].id + "`)'><span class='glyphicon glyphicon-eye'></span>&nbsp;View</a></td>";
+                                strdata += "</tr>";
                             }
-                            strdata += "</tr>";
+                           
                             $("#contentContainer").html(strdata);
                         }
                     }
-                    else {
+                    else
+                    {
                         strdata += "<tr><td colspan='2'>No data found.</td></tr>";
                     }
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
+                error: function (jqXHR, textStatus, errorThrown)
+                {
                     console.error(textStatus, errorThrown);
                 }
             });
@@ -159,7 +181,8 @@
         function movePreviousPage() { currentPageIndex--; displayObjects(); }
         function moveNextPage() { currentPageIndex++; displayObjects(); }
 
-        $(document).ready(function () {
+        $(document).ready(function ()
+        {
             displayObjects();
         });
 
