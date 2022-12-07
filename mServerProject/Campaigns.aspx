@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewCampaign.aspx.cs" Inherits="mServerProject.ViewCampaign" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Campaigns.aspx.cs" Inherits="mServerProject.Campaigns" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -122,7 +122,7 @@
 
             $.ajax({
                 type: "POST",
-                url: '/ViewCampaign.aspx/GetCampaign',
+                url: '/Campaigns.aspx/GetCampaign',
                 data: {},
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {

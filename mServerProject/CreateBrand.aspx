@@ -98,8 +98,11 @@
                                 <div class="form-group">
                                     <label>Type *</label>
                                     <asp:DropDownList runat="server" ID="ddlType" class="form-control" required>
-                                        <asp:ListItem Text="TENDLC_NON_PROFIT" Value="TENDLC_NON_PROFIT"></asp:ListItem>
                                         <asp:ListItem Text="TENDLC_GOVERNMENT" Value="TENDLC_GOVERNMENT"></asp:ListItem>
+                                        <asp:ListItem Text="TENDLC_PUBLIC_COMPANY" Value="TENDLC_PUBLIC_COMPANY"></asp:ListItem>
+                                        <asp:ListItem Text="TENDLC_PUBLIC_COMPANY" Value="TENDLC_PUBLIC_COMPANY"></asp:ListItem>
+                                        <asp:ListItem Text="TENDLC_PRIVATE_COMPANY" Value="TENDLC_PRIVATE_COMPANY"></asp:ListItem>
+                                        <asp:ListItem Text="TENDLC_NON_PROFIT" Value="TENDLC_NON_PROFIT"></asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
                             </div>
@@ -190,7 +193,7 @@
                 </div>
                 <div class="text-right">
                     <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
-                    <a href="/ViewBrand" class="btn btn-danger">Cancel</a>
+                    <button type="reset" class="btn btn-danger"> Cancel</button>                    
                 </div>
             </div>
 

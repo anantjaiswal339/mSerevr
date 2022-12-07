@@ -11,7 +11,7 @@ namespace mServerProject
 {
 
 
-    public partial class ViewBrand
+    public partial class Campaigns
     {
     }
 }

@@ -188,9 +188,9 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="ViewBrand.aspx" />
+    <Content Include="Brands.aspx" />
     <Content Include="ViewBrandDetails.aspx" />
-    <Content Include="ViewCampaign.aspx" />
+    <Content Include="Campaigns.aspx" />
     <Content Include="ViewCampaignDetails.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -260,12 +260,12 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="ViewBrand.aspx.cs">
-      <DependentUpon>ViewBrand.aspx</DependentUpon>
+    <Compile Include="Brands.aspx.cs">
+      <DependentUpon>Brands.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewBrand.aspx.designer.cs">
-      <DependentUpon>ViewBrand.aspx</DependentUpon>
+    <Compile Include="Brands.aspx.designer.cs">
+      <DependentUpon>Brands.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewBrandDetails.aspx.cs">
       <DependentUpon>ViewBrandDetails.aspx</DependentUpon>
@@ -274,12 +274,12 @@
     <Compile Include="ViewBrandDetails.aspx.designer.cs">
       <DependentUpon>ViewBrandDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewCampaign.aspx.cs">
-      <DependentUpon>ViewCampaign.aspx</DependentUpon>
+    <Compile Include="Campaigns.aspx.cs">
+      <DependentUpon>Campaigns.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewCampaign.aspx.designer.cs">
-      <DependentUpon>ViewCampaign.aspx</DependentUpon>
+    <Compile Include="Campaigns.aspx.designer.cs">
+      <DependentUpon>Campaigns.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewCampaignDetails.aspx.cs">
       <DependentUpon>ViewCampaignDetails.aspx</DependentUpon>

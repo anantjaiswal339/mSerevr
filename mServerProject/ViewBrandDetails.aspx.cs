@@ -29,12 +29,11 @@ namespace mServerProject
         }
 
         [WebMethod]
-        public static string BindBrandDetails(string brandId)
+        public static object BindBrandDetails(string brandId)
         {
             try
             {
-                string resbrd = _brandService.GetBrandDetails(brandId);
-                return resbrd;
+                return _brandService.GetBrandDetails(brandId);                
             }
             catch (Exception ex)
             {

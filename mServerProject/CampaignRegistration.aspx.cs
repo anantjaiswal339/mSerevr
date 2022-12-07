@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Web.UI.WebControls;
 
 namespace mServerProject
 {
@@ -18,9 +19,27 @@ namespace mServerProject
             get { return campaignService ?? (campaignService = new CampaignService()); }
         }
 
+        private static IBrandService brandService;
+        private static IBrandService _brandService
+        {
+            get { return brandService ?? (brandService = new BrandService()); }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                var brands = _brandService.GetBrands();
+                if(brands.StatusCode == 200)
+                {
+                    ddlBrand.DataSource = brands.Data.results;                    
+                    ddlBrand.DataValueField  ="id";
+                    ddlBrand.DataTextField  ="name";
+                    ddlBrand.DataBind();
 
+                    ddlBrand.Items.Insert(0, new ListItem("--Select Brand--", ""));
+                }
+            }
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)

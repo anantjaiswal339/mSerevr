@@ -162,10 +162,6 @@
                                             <label for="years">Select a Brand *</label>
                                             <asp:DropDownList runat="server" ID="ddlBrand" CssClass="form-control input-sm" required>
                                                 <asp:ListItem Text="-- Select --" Value=""></asp:ListItem>
-                                                <asp:ListItem Text="Wire1Air" Value="Wire1Air"></asp:ListItem>
-                                                <asp:ListItem Text="Wire2Air" Value="Wire2Air"></asp:ListItem>
-                                                <asp:ListItem Text="Wire3Air" Value="Wire3Air"></asp:ListItem>
-                                                <asp:ListItem Text="Wire4Air" Value="Wire4Air"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
                                         <div class="form-group col-md-6 col-sm-6">
@@ -203,11 +199,11 @@
 
                                         <div class="form-group col-md-6 col-sm-6">
                                             <label for="years">Message Type *</label>
-                                            <asp:DropDownList ></asp:DropDownList>
+                                            <asp:DropDownList></asp:DropDownList>
                                             <asp:ListBox runat="server" ID="lblMessageType" SelectionMode="multiple" CssClass="form-control">
                                                 <asp:ListItem Text="SMS" Value="SMS" />
                                                 <asp:ListItem Text="MMS" Value="MMS" />
-                                            </asp:ListBox> 
+                                            </asp:ListBox>
                                         </div>
                                     </div>
                                 </div>
@@ -310,16 +306,16 @@
                                             <asp:TextBox Height="60" required runat="server" ID="txtSupportMessage" class="form-control" placeholder="Support Message" TextMode="MultiLine"></asp:TextBox>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-12 col-sm-12">
-                                        <div class="text-right">
-                                            <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
-                                            <%--<button class="btn btn-large btn-danger" type="button">Cancel </button>--%>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
+                    </div>
+                    <div class="form-group col-md-12 col-sm-12">
+                        <div class="text-right">
+                            <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
+                            <%--<button class="btn btn-large btn-danger" type="button">Cancel </button>--%>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -7,11 +7,10 @@ namespace mServerWeb.Core.Services.Interfaces
 {
     public interface IBrandService
     {
-        BrandResponse AddBrand(BrandRequest req);
-        //BrandsList GetBrands();
-        Root GetBrands();
+        MServerResponse<BrandResponse> AddBrand(BrandRequest req);
+        MServerResponse<Root> GetBrands();
         string GetBrandsJson();
-        string GetBrandDetails(string brandId);
+        MServerResponse<BrandModel> GetBrandDetails(string brandId);
         //Result BindBrandDetails(string brandId);
     }
 }

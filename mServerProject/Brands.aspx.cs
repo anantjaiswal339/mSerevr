@@ -14,7 +14,7 @@ using System.Web.UI.WebControls;
 
 namespace mServerProject
 {
-    public partial class ViewBrand : System.Web.UI.Page
+    public partial class Brands : System.Web.UI.Page
     {
         private static IBrandService brandService;
         private static IBrandService _brandService
@@ -31,8 +31,13 @@ namespace mServerProject
         }
 
         [WebMethod]
-        public static string GetBrands()
+        public static object GetBrands()
         {
+            var brands = _brandService.GetBrands();
+            if (brands.StatusCode == 200)
+            {
+                return brands;
+            }
             string resbrd = _brandService.GetBrandsJson();
             return resbrd;
         }

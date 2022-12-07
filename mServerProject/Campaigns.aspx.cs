@@ -10,7 +10,7 @@ using System.Web.Services;
 
 namespace mServerProject
 {
-    public partial class ViewCampaign : System.Web.UI.Page
+    public partial class Campaigns : System.Web.UI.Page
     {
         private static ICampaignService campaignService;
         private static ICampaignService _campaignService

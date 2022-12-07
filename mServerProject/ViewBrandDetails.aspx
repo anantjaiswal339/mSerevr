@@ -5,73 +5,73 @@
         .martop {
             margin-top: 30px;
         }
+
+        table.table-user-information td {
+            border: none !important;
+        }
     </style>
 
     <div class="container">
         <div class="row martop">
 
             <div class="col-md-12">
+                <div class="pull-left">
+                    <h3>Brand Details</h3>
+                </div>
                 <div class="pull-right">
-                    <a href="/CreateBrand" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add Brand</a>
+                    <a href="/Brands.aspx" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-backward"></i>&nbsp;Back To Brands</a>
                 </div>
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                 <label id="lblmsg" class="label label-danger" style="display: none;">alert message</label>
-                <br />
-                <br />
+        
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">Brand Information</h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <div class=" col-md-6 col-lg-6" id="divbrddt">
+                            <div class=" col-md-10 col-lg-9" id="divbrddt">
                                 <table class="table table-user-information">
                                     <tbody>
                                         <tr>
-                                            <td><b>Brand :</b></td>
+                                            <td><b>Name :</b></td>
                                             <td>
                                                 <label id="lblcmpname"></label>
-                                             </td>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <td><b>Use Case :</b></td>
+                                            <td><b>Legal Name :</b></td>
                                             <td>
                                                 <label id="lbllegname"></label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><b>Requires ThorughPut Less Then 30 Message Per Minute Upto 2000 Message A day :</b></td>
+                                            <td><b>Email :</b></td>
                                             <td>
                                                 <label id="lblbrandemail"></label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><b>Camapign Name :</b></td>
+                                            <td><b>Website :</b></td>
                                             <td>
                                                 <label id="lblwebsiteurl"></label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><b>Camapign Description :</b></td>
+                                            <td><b>Phone :</b></td>
                                             <td>
                                                 <label id="lblbrandpone">Kathmandu,Nepal</label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><b>Campaign Registry :</b></td>
+                                            <td><b>Country :</b></td>
                                             <td>
                                                 <label id="lblcntofreg"></label>
                                             </td>
                                         </tr>
-                                    </tbody>
-                                </table>
-                            </div>
 
-                            <div class=" col-md-6 col-lg-6">
-                                <table class="table table-user-information">
-                                    <tbody>
                                         <tr>
                                             <td><b>Address Line 1 :</b></td>
                                             <td>
@@ -97,23 +97,93 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><b>What Type Of Legle Entity Is The Organization? :</b></td>
+                                            <td><b>Vertical :</b></td>
                                             <td>
                                                 <label id="lblorganization"></label>
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><b>Ein - Employer Identification Number :</b></td>
+                                            <td><b>EIN - Employer Identification Number :</b></td>
                                             <td>
                                                 <label id="lblidentificationno"></label>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td><b>Identity :</b></td>
+                                            <td>
+                                                <label id="lblIdentity"></label>
+                                            </td>
+                                        </tr>
+
                                     </tbody>
                                 </table>
                             </div>
 
+
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <br />
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Brand Vetting</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Vetting Type
+                                    </th>
+                                    <th>Vetting Partner
+                                    </th>
+                                    <th>Vetting On
+                                    </th>
+                                    <th>Vetting Outcome
+                                    </th>
+                                    <th>Vetting Id
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                <br />
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Associated Campaign</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Campaign ID
+                                    </th>
+                                    <th>Campaign Description
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+
                 </div>
             </div>
         </div>

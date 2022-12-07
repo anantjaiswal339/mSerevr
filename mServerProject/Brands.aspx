@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ViewBrand.aspx.cs" Inherits="mServerProject.ViewBrand" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Brands.aspx.cs" Inherits="mServerProject.Brands" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
@@ -54,47 +54,6 @@
 
     <script type="text/javascript">
 
-        $(document).ready(function () {
-            //GetBrands();
-        });
-
-        function GetBrands1() {
-            $.ajax({
-                type: "POST",
-                url: '/ViewBrand.aspx/GetBrands',
-                data: {},
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if (data != undefined) {
-                        var jsondata = JSON.parse(data.d);
-                        if (jsondata.results != null && jsondata.results != undefined && jsondata.results != "") {
-                            for (let i = 0; i < jsondata.results.length; i++) {
-                                $("#lbltesting").text(jsondata.results[i].id);
-                            }
-                        }
-                    }
-                    else {
-                        console.log(jsondata);
-                    }
-                    console.log(jsondata);
-                },
-                failure: function (response) {
-                    alert(response.d);
-                }
-            });
-        }
-
-        function GetBrandDetails(brdid) {
-            sessionStorage.setItem("brdid", brdid);
-            //$.session.set("brdid", brdid);
-            window.location = "/ViewBrandDetails";
-        }
-
-    </script>
-
-
-    <script type="text/javascript">
-
         var pageSize = 10;
         var currentPageIndex = 0;
         var pageCount = 0;
@@ -102,47 +61,10 @@
         var startItemIndex = 0;
         var itemsToDisplay = 0;
 
-        function PaginateSetPageObjects() {
-            $('#pageTitle').text('Page ' + (currentPageIndex + 1) + ' of ' + pageCount);
-
-            if (pageCount <= 1) {
-                $('#nextPage').hide();
-                $('#previousPage').hide();
-                $('#lastPage').hide();
-                $('#firstPage').hide();
-            } else {
-                $('#nextPage').show();
-                $('#previousPage').show();
-                $('#lastPage').show();
-                $('#firstPage').show();
-
-                if (currentPageIndex == 0) {
-                    $('#previousPage').hide();
-                    $('#firstPage').hide();
-                } else if (currentPageIndex == (pageCount - 1)) {
-                    $('#nextPage').hide();
-                    $('#lastPage').hide();
-                }
-            }
-        }
-
-        function PaginateCalculatePageIndexes(length) {
-            pageCount = 1;
-
-            if (length > pageSize) {
-                if (length / pageSize > parseInt(length / pageSize)) {
-                    pageCount = parseInt(length / pageSize) + 1;
-                } else {
-                    pageCount = length / pageSize;
-                }
-            }
-            startItemIndex = currentPageIndex * pageSize;
-            var remainingItems = length - startItemIndex;
-            itemsToDisplay = pageSize + startItemIndex;
-
-            if (remainingItems < pageSize) {
-                itemsToDisplay = remainingItems + startItemIndex;
-            }
+        function GetBrandDetails(brdid) {
+            sessionStorage.setItem("brdid", brdid);
+            //$.session.set("brdid", brdid);
+            window.location = "/ViewBrandDetails";
         }
 
         function displayObjects() {
@@ -151,12 +73,13 @@
 
             $.ajax({
                 type: "POST",
-                url: '/ViewBrand.aspx/GetBrands',
+                url: '/Brands.aspx/GetBrands',
                 data: {},
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    if (data != undefined) {
-                        var jsondata = JSON.parse(data.d);
+                    debugger
+                    if (data.d.StatusCode == 200) {
+                        var jsondata = data.d.Data;
                         if (jsondata.results != null && jsondata.results != undefined && jsondata.results != "") {
                             $("tbody#contentContainer").find("tr").remove().end();
                             strdata += "<tr>";
@@ -166,7 +89,7 @@
                                 strdata += "<td>" + jsondata.results[i].type + "</td>";
                                 strdata += "<td>" + jsondata.results[i].countryCode + "</td>";
                                 strdata += "<td>" + jsondata.results[i].supportEmail + "</td>";
-                                strdata += "<td>" + jsondata.results[i].createdDate + "</td>";
+                                strdata += "<td>" + new Date(parseInt(jsondata.results[i].createdDate.substr(6))).toDateString(); + "</td>";
                                 strdata += "<td><a class='btn btn-primary btn-xs' id='lnkbtnview' href='javascript:void(0)' onClick='GetBrandDetails(`" + jsondata.results[i].id + "`)'><span class='glyphicon glyphicon-eye'></span>&nbsp;View</a></td>";
                             }
                             strdata += "</tr>";
@@ -183,12 +106,7 @@
                 }
             });
         }
-
-        function moveFirstPage() { currentPageIndex = 0; displayObjects(); }
-        function moveLastPage() { currentPageIndex = pageCount - 1; displayObjects(); }
-        function movePreviousPage() { currentPageIndex--; displayObjects(); }
-        function moveNextPage() { currentPageIndex++; displayObjects(); }
-
+   
         $(document).ready(function () {
             displayObjects();
         });

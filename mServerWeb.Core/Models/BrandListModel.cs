@@ -27,7 +27,7 @@ namespace mServerWeb.Core.Models
         public int totalResults { get; set; }
     }
 
-    public class Result
+    public class BrandModel
     {
         public string id { get; set; }
         public string referenceId { get; set; }
@@ -48,7 +48,7 @@ namespace mServerWeb.Core.Models
 
     public class Root
     {
-        public List<Result> results { get; set; }
+        public List<BrandModel> results { get; set; }
         public Paging paging { get; set; }
     }
 

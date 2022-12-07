@@ -3,6 +3,7 @@ using mServerWeb.Core.Services;
 using mServerWeb.Core.Services.Interfaces;
 using System;
 using System.Data;
+using System.Web.DynamicData;
 using System.Xml.Linq;
 
 namespace mServerProject
@@ -26,10 +27,11 @@ namespace mServerProject
         {
             try
             {
+                string vasId = "VAS010";
                 BrandRequest req = new BrandRequest
                 {
                     Name = txtName.Text,
-                    ReferenceId = "",
+                    ReferenceId = vasId,
                     Type = ddlType.Text,
                     Address = new Address
                     {
@@ -38,7 +40,7 @@ namespace mServerProject
                         State = txtState.Text,
                         ZipCode = txtZipCode.Text
                     },
-                    AlternateBusinessId = new AlternateBusinessId(),
+                    AlternateBusinessId = new AlternateBusinessId { Id="590900O3Z29E78HVXT56", Type="LEI" },
                     CountryCode = ddlCountry.Text,
                     SupportEmail = txtEmail.Text,
                     LegalName = txtLegalName.Text,
@@ -49,12 +51,14 @@ namespace mServerProject
 
                 };
 
-                var res = _brandService.AddBrand(req);
+                var response = _brandService.AddBrand(req);
+                if (response.StatusCode == 200)
+                    Response.Redirect("Brands");
 
             }
             catch (Exception ex)
             {
-                throw ex;
+                
             }
         }
     }
