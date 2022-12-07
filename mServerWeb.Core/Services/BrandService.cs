@@ -13,14 +13,14 @@ namespace mServerWeb.Core.Services
 {
     public class BrandService : IBrandService
     {
-        public MServerResponse<BrandResponse> AddBrand(BrandRequest req)
+        public MServerResponse<BrandResponse> AddBrand(BrandRequest req, string url, string auth)
         {
             var response = new MServerResponse<BrandResponse>();
             try
             {
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("https://lz6wnj.api.infobip.com");
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", "b3accc83fd5f003e979dff7f5e55071d-d8d904be-ae10-4ffe-aca5-6fb361c52702");
+                client.BaseAddress = new Uri(url); 
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", auth);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                 
                 JsonConvert.DefaultSettings = () => new JsonSerializerSettings
@@ -51,14 +51,14 @@ namespace mServerWeb.Core.Services
             }
         }
 
-        public MServerResponse<Root> GetBrands()
+        public MServerResponse<Root> GetBrands(string url, string auth)
         {
             var response = new MServerResponse<Root>();
             try
             {
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("https://lz6wnj.api.infobip.com");
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", "b3accc83fd5f003e979dff7f5e55071d-d8d904be-ae10-4ffe-aca5-6fb361c52702");
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", auth);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 JsonConvert.DefaultSettings = () => new JsonSerializerSettings
@@ -89,7 +89,7 @@ namespace mServerWeb.Core.Services
         }
 
 
-        public string GetBrandsJson()
+        public string GetBrandsJson(string url, string auth)
         {
             try
             {
@@ -115,7 +115,7 @@ namespace mServerWeb.Core.Services
             }
         }
 
-        public MServerResponse<BrandModel> GetBrandDetails(string brandId)
+        public MServerResponse<BrandModel> GetBrandDetails(string brandId, string url, string auth)
         {
             var response = new MServerResponse<BrandModel>();
             try
@@ -123,8 +123,8 @@ namespace mServerWeb.Core.Services
                 string jdata = "\"{\\r\\n  \\\"id\\\": \\\"79ff0424-7201-45ca-bcbe-9989535fa2ec\\\",\\r\\n  \\\"referenceId\\\": \\\"customer-defined-identifier\\\",\\r\\n  \\\"type\\\": \\\"TENDLC_NON_PROFIT\\\",\\r\\n  \\\"address\\\": {\\r\\n    \\\"city\\\": \\\"Seattle\\\",\\r\\n    \\\"state\\\": \\\"WA\\\",\\r\\n    \\\"street\\\": \\\"56486 915th Street\\\",\\r\\n    \\\"zipCode\\\": \\\"98061\\\"\\r\\n  },\\r\\n  \\\"alternateBusinessId\\\": {\\r\\n    \\\"id\\\": \\\"590900O3Z29E78HVXT56\\\",\\r\\n    \\\"type\\\": \\\"LEI\\\"\\r\\n  },\\r\\n  \\\"countryCode\\\": \\\"US\\\",\\r\\n  \\\"createdDate\\\": \\\"2021-01-19T16:17:14Z\\\",\\r\\n  \\\"supportEmail\\\": \\\"exampl@example.com\\\",\\r\\n  \\\"lastModifiedDate\\\": \\\"2021-01-19T16:17:14Z\\\",\\r\\n  \\\"legalName\\\": \\\"Examples In Need\\\",\\r\\n  \\\"name\\\": \\\"Examples In Need\\\",\\r\\n  \\\"supportPhone\\\": \\\"18886679878\\\",\\r\\n  \\\"vertical\\\": \\\"NON_PROFIT_ORGANIZATION\\\",\\r\\n  \\\"website\\\": \\\"https://www.example.com\\\",\\r\\n  \\\"taxId\\\": \\\"62-4161762\\\"\\r\\n}\"";
 
                 HttpClient client = new HttpClient();
-                client.BaseAddress = new Uri("https://lz6wnj.api.infobip.com");
-                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", "b3accc83fd5f003e979dff7f5e55071d-d8d904be-ae10-4ffe-aca5-6fb361c52702");
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", auth);
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
                 JsonConvert.DefaultSettings = () => new JsonSerializerSettings

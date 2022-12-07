@@ -1,30 +1,49 @@
 ﻿using mServerWeb.Core.Models;
 using mServerWeb.Core.Services.Interfaces;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using RestSharp;
 using System;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using System.Text;
 
 namespace mServerWeb.Core.Services
 {
 	public class CampaignService : ICampaignService
     {
-        public CampaignResponse AddCampaign(CampaignRequest req)
+        public MServerResponse<CampaignResponse> AddCampaign(CampaignRequest req, string url, string auth)
         {
-			try
+            var response = new MServerResponse<CampaignResponse>();
+            try
 			{
-                var client = new RestClient("https://{baseUrl}/number-registration/1/campaigns");
-                var request = new RestRequest("", Method.Post);
-                request.AddHeader("Authorization", "{authorization}");
-                request.AddHeader("Content-Type", "application/json");
-                request.AddHeader("Accept", "application/json");
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri("https://lz6wnj.api.infobip.com");
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", "b3accc83fd5f003e979dff7f5e55071d-d8d904be-ae10-4ffe-aca5-6fb361c52702");
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                };
+
                 var body = JsonConvert.SerializeObject(req);
-                request.AddParameter("application/json", body, ParameterType.RequestBody);
-                var response = client.Execute(request);
-                Console.WriteLine(response.Content);
+                var httpContent = new StringContent(body, Encoding.UTF8, "application/json");
+                using (HttpResponseMessage httpResponse = client.PostAsync("number-registration/1/campaigns", httpContent).GetAwaiter().GetResult())
+                {
+                    var responseContent = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    if (httpResponse.IsSuccessStatusCode)
+                    {
+                        response.StatusCode = (int)httpResponse.StatusCode;
+                        response.Data = JsonConvert.DeserializeObject<CampaignResponse>(responseContent);
+                    }
+                    else
+                    {
+                        response.Error = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    }
+                }
 
-                CampaignResponse resObj = JsonConvert.DeserializeObject<CampaignResponse>(response.Content);
-
-                return resObj;
+                return response;
             }
 			catch (Exception ex)
 			{
@@ -32,24 +51,36 @@ namespace mServerWeb.Core.Services
 			}
         }
 
-        public string GetCampaignJson()
+        public MServerResponse<CamRoot> GetCampaignJson(string url, string auth)
         {
+            var response = new MServerResponse<CamRoot>();
             try
             {
-                string jsonData = "\"{\\r\\n  \\\"results\\\": [\\r\\n    {\\r\\n      \\\"id\\\": \\\"4d3601ed-c632-4979-ae22-43854ef4ffaf\\\",\\r\\n      \\\"referenceId\\\": \\\"customer-defined-identifier\\\",\\r\\n      \\\"type\\\": \\\"TEN_DIGIT_LONG_CODE\\\",\\r\\n      \\\"name\\\": \\\"Example Promo\\\",\\r\\n      \\\"createdDate\\\": \\\"2019-08-24T14:15:22Z\\\",\\r\\n      \\\"lastModifiedDate\\\": \\\"2019-08-24T14:15:22Z\\\",\\r\\n      \\\"numberKeys\\\": [\\r\\n        \\\"D79C1785A82A2BC6FC0B867DCD055215\\\"\\r\\n      ],\\r\\n      \\\"brandId\\\": \\\"a0c63335-f841-4d43-9ef8-e0765a233f29\\\",\\r\\n      \\\"confirmationMessage\\\": \\\"Example promotional-marketing. Msg&data rates may apply. Reply HELP for help, STOP to cancel.\\\",\\r\\n      \\\"customerCarePhone\\\": \\\"18889997777\\\",\\r\\n      \\\"customerCareEmail\\\": \\\"examples@example.com\\\",\\r\\n      \\\"exampleMessages\\\": [\\r\\n        \\\"Come in today and get 10% OFF today!\\\"\\r\\n      ],\\r\\n      \\\"helpMessage\\\": \\\"Example promotional-marketing: Help at textsupport@example.com or 18889997777. Msg&data rates may apply. Reply STOP to cancel.\\\",\\r\\n      \\\"lowVolume\\\": false,\\r\\n      \\\"messageTypes\\\": [\\r\\n        \\\"sms\\\",\\r\\n        \\\"mms\\\"\\r\\n      ],\\r\\n      \\\"programSummary\\\": \\\"A mix of promotional and informational messaging.\\\",\\r\\n      \\\"stopMessage\\\": \\\"Example promotional-marketing: You have been unsubscribed, no more messages will be sent.\\\",\\r\\n      \\\"termsAndConditionsUrl\\\": \\\"https://www.example.com/terms-and-conditions\\\",\\r\\n      \\\"useCase\\\": \\\"PROMOTIONAL_MARKETING\\\",\\r\\n      \\\"optIns\\\": {\\r\\n        \\\"keyword\\\": {\\r\\n          \\\"callToAction\\\": \\\"Text MESSAGE to subscribe\\\",\\r\\n          \\\"keywords\\\": [\\r\\n            \\\"MESSAGE\\\"\\r\\n          ],\\r\\n          \\\"type\\\": \\\"keyword\\\"\\r\\n        }\\r\\n      }\\r\\n    }\\r\\n  ],\\r\\n  \\\"paging\\\": {\\r\\n    \\\"page\\\": 0,\\r\\n    \\\"size\\\": 20,\\r\\n    \\\"totalPages\\\": 1,\\r\\n    \\\"totalResults\\\": 1\\r\\n  }\\r\\n}\"";
-                return jsonData;
-                var client = new RestClient("https://{baseUrl}/number-registration/1/campaigns");
-                var request = new RestRequest("", Method.Get);
-                request.AddHeader("Authorization", "{authorization}");
-                request.AddHeader("Content-Type", "application/json");
-                request.AddHeader("Accept", "application/json");
-                //var body = JsonConvert.SerializeObject(req);
-                //request.AddParameter("application/json", body, ParameterType.RequestBody);
-                var response = client.Execute(request);
-                Console.WriteLine(response.Content);
-                //dynamic dyobj = JsonConvert.DeserializeObject<dynamic>(data);
-                //BrandsList resObj = JsonConvert.DeserializeObject<BrandsList>(dyobj);
-                //return data;
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", auth);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                };
+
+                using (HttpResponseMessage httpResponse = client.GetAsync("number-registration/1/campaigns").GetAwaiter().GetResult())
+                {
+                    var responseContent = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    if (httpResponse.IsSuccessStatusCode)
+                    {
+                        response.StatusCode = (int)httpResponse.StatusCode;
+                        response.Data = JsonConvert.DeserializeObject<CamRoot>(responseContent);
+                    }
+                    else
+                    {
+                        response.Error = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    }
+                }
+                return response;
+
             }
             catch (Exception ex)
             {
@@ -57,23 +88,35 @@ namespace mServerWeb.Core.Services
             }
         }
 
-        public string GetCampaignDetails(string campaignId)
+        public MServerResponse<CamResult> GetCampaignDetails(string campaignId, string url, string auth)
         {
+            var response = new MServerResponse<CamResult>();
             try
             {
-                string jdata = "\"{\\\"id\\\":\\\"4d3601ed-c632-4979-ae22-43854ef4ffaf\\\",\\\"referenceId\\\":\\\"customer-defined-identifier\\\",\\\"type\\\":\\\"TEN_DIGIT_LONG_CODE\\\",\\\"name\\\":\\\"ExamplePromo\\\",\\\"createdDate\\\":\\\"2019-08-24T14:15:22Z\\\",\\\"lastModifiedDate\\\":\\\"2019-08-24T14:15:22Z\\\",\\\"numberKeys\\\":[\\\"D79C1785A82A2BC6FC0B867DCD055215\\\"],\\\"brandId\\\":\\\"a0c63335-f841-4d43-9ef8-e0765a233f29\\\",\\\"confirmationMessage\\\":\\\"Examplepromotional-marketing.Msg&dataratesmayapply.ReplyHELPforhelp,STOPtocancel.\\\",\\\"customerCarePhone\\\":\\\"18889997777\\\",\\\"customerCareEmail\\\":\\\"examples@example.com\\\",\\\"exampleMessages\\\":[\\\"Comeintodayandget10%OFFtoday!\\\"],\\\"helpMessage\\\":\\\"Examplepromotional-marketing:Helpattextsupport@example.comor18889997777.Msg&dataratesmayapply.ReplySTOPtocancel.\\\",\\\"lowVolume\\\":false,\\\"messageTypes\\\":[\\\"sms\\\",\\\"mms\\\"],\\\"programSummary\\\":\\\"Amixofpromotionalandinformationalmessaging.\\\",\\\"stopMessage\\\":\\\"Examplepromotional-marketing:Youhavebeenunsubscribed,nomoremessageswillbesent.\\\",\\\"termsAndConditionsUrl\\\":\\\"https://www.example.com/terms-and-conditions\\\",\\\"useCase\\\":\\\"PROMOTIONAL_MARKETING\\\",\\\"optIns\\\":{\\\"keyword\\\":{\\\"callToAction\\\":\\\"TextMESSAGEtosubscribe\\\",\\\"keywords\\\":[\\\"MESSAGE\\\"],\\\"type\\\":\\\"keyword\\\"}}}\"";
-                return jdata;
-                var client = new RestClient("https://{baseUrl}/number-registration/1/campaigns/" + campaignId);
-                var request = new RestRequest("", Method.Get);
-                request.AddHeader("Authorization", "{authorization}");
-                request.AddHeader("Content-Type", "application/json");
-                request.AddHeader("Accept", "application/json");
-                //var body = JsonConvert.SerializeObject(req);
-                //request.AddParameter("application/json", body, ParameterType.RequestBody);
-                var response = client.Execute(request);
-                Console.WriteLine(response.Content);
-                //Root resObj = JsonConvert.DeserializeObject<Root>(response.Content);
-                //return resObj;
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(url);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("App", auth);
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+                JsonConvert.DefaultSettings = () => new JsonSerializerSettings
+                {
+                    ContractResolver = new CamelCasePropertyNamesContractResolver()
+                };
+
+                using (HttpResponseMessage httpResponse = client.GetAsync($"number-registration/1/campaigns/{campaignId}").GetAwaiter().GetResult())
+                {
+                    var responseContent = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    if (httpResponse.IsSuccessStatusCode)
+                    {
+                        response.StatusCode = (int)httpResponse.StatusCode;
+                        response.Data = JsonConvert.DeserializeObject<CamResult>(responseContent);
+                    }
+                    else
+                    {
+                        response.Error = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                    }
+                }
+                return response;
             }
             catch (Exception ex)
             {

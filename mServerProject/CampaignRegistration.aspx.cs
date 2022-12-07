@@ -4,6 +4,7 @@ using mServerWeb.Core.Services;
 using mServerWeb.Core.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Net.NetworkInformation;
@@ -24,12 +25,14 @@ namespace mServerProject
         {
             get { return brandService ?? (brandService = new BrandService()); }
         }
+        private static string url = ConfigurationSettings.AppSettings["Url"];
+        private static string auth = ConfigurationSettings.AppSettings["Auth"];
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                var brands = _brandService.GetBrands();
+                var brands = _brandService.GetBrands(url, auth);
                 if(brands.StatusCode == 200)
                 {
                     ddlBrand.DataSource = brands.Data.results;                    
@@ -87,13 +90,14 @@ namespace mServerProject
                     optIns.Web = web;
                 }
 
+                string vasId = "VAS010";
                 CampaignRequest req = new CampaignRequest
                 {
                     Name = txtName.Text,
-                    ReferenceId = "",
+                    ReferenceId = vasId,
                     Type = "TEN_DIGIT_LONG_CODE",
-                    NumberKeys = new List<string>(),
-                    BrandId = txtName.Text,
+                    NumberKeys = new List<string>() { "D79C1785A82A2BC6FC0B867DCD055215" },
+                    BrandId = ddlBrand.Text,
                     ConfirmationMessage = txtConfirmationMessage.Text,
                     CustomerCarePhone = txtSupportNumber.Text,
                     CustomerCareEmail = txtSupportEmail.Text,
@@ -101,14 +105,14 @@ namespace mServerProject
                     HelpMessage = txtSupportMessage.Text,
                     LowVolume = false,
                     MessageTypes = messageType,
-                    ProgramSummary = txtName.Text,
-                    StopMessage = txtName.Text,
-                    TermsAndConditionsUrl = txtName.Text,
-                    UseCase = txtName.Text,
+                    ProgramSummary = txtCampaingDescription.Text,
+                    StopMessage = txtStopMessage.Text,
+                    TermsAndConditionsUrl = txtTAndC.Text,
+                    UseCase = ddlUseCase.Text,
                     OptIns = optIns
                 };
 
-                var res = _campaignService.AddCampaign(req);
+                var res = _campaignService.AddCampaign(req, url , auth);
 
             }
             catch (Exception ex)

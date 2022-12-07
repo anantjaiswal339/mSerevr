@@ -51,7 +51,7 @@ namespace mServerWeb.Core.Models
 
     public class CamRoot
     {
-        public List<BrandModel> results { get; set; }
+        public List<CamResult> results { get; set; }
         public Paging paging { get; set; }
     }
 

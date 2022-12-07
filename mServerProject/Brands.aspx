@@ -77,7 +77,6 @@
                 data: {},
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    debugger
                     if (data.d.StatusCode == 200) {
                         var jsondata = data.d.Data;
                         if (jsondata.results != null && jsondata.results != undefined && jsondata.results != "") {

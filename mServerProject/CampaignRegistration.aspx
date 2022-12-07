@@ -172,6 +172,12 @@
                                                 <asp:ListItem Text="CHAT" Value="CHAT"></asp:ListItem>
                                                 <asp:ListItem Text="DONATION" Value="DONATION"></asp:ListItem>
                                                 <asp:ListItem Text="EDUCATION" Value="EDUCATION"></asp:ListItem>
+                                                <asp:ListItem Text="FRAUD_ALERTS" Value="FRAUD_ALERTS"></asp:ListItem>
+                                                <asp:ListItem Text="PROMOTIONAL_MARKETING" Value="PROMOTIONAL_MARKETING"></asp:ListItem>
+                                                <asp:ListItem Text="PUBLIC_SERVICE_ANNOUNCEMENT" Value="PUBLIC_SERVICE_ANNOUNCEMENT"></asp:ListItem>
+                                                <asp:ListItem Text="SWEEPSTAKES_CONTEST" Value="SWEEPSTAKES_CONTEST"></asp:ListItem>
+                                                <asp:ListItem Text="TWO_FACTOR_AUTH" Value="TWO_FACTOR_AUTH"></asp:ListItem>
+                                                <asp:ListItem Text="VOTING_POLLING" Value="VOTING_POLLING"></asp:ListItem>
                                             </asp:DropDownList>
                                         </div>
 

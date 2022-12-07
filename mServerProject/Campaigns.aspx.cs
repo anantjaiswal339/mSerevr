@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
+using System.Configuration;
 
 namespace mServerProject
 {
@@ -17,6 +18,8 @@ namespace mServerProject
         {
             get { return campaignService ?? (campaignService = new CampaignService()); }
         }
+        private static string url = ConfigurationSettings.AppSettings["Url"];
+        private static string auth = ConfigurationSettings.AppSettings["Auth"];
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -26,10 +29,9 @@ namespace mServerProject
         }
 
         [WebMethod]
-        public static string GetCampaign()
+        public static object GetCampaign()
         {
-            string resbrd = _campaignService.GetCampaignJson();
-            return resbrd;
+            return _campaignService.GetCampaignJson(url, auth);
         }
     }
 }

@@ -5,7 +5,9 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -22,23 +24,27 @@ namespace mServerProject
             get { return brandService ?? (brandService = new BrandService()); }
         }
 
+        private static string url = ConfigurationSettings.AppSettings["Url"];
+        private static string auth = ConfigurationSettings.AppSettings["Auth"];
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 //BindBrand();
             }
+
         }
 
         [WebMethod]
         public static object GetBrands()
         {
-            var brands = _brandService.GetBrands();
+            var brands = _brandService.GetBrands(url, auth);
             if (brands.StatusCode == 200)
             {
                 return brands;
             }
-            string resbrd = _brandService.GetBrandsJson();
+            string resbrd = _brandService.GetBrandsJson(url, auth);
             return resbrd;
         }
 
@@ -46,7 +52,7 @@ namespace mServerProject
         {
             try
             {
-                string resbrd = _brandService.GetBrandsJson();
+                string resbrd = _brandService.GetBrandsJson(url, auth);
                 Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(resbrd);
 
                 //var resbrd = _brandService.GetBrands();

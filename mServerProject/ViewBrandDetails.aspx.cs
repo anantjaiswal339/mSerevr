@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using mServerWeb.Core.Models;
 using System.Web.Services;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace mServerProject
 {
@@ -19,6 +20,9 @@ namespace mServerProject
         {
             get { return brandService ?? (brandService = new BrandService()); }
         }
+
+        private static string url = ConfigurationSettings.AppSettings["Url"];
+        private static string auth = ConfigurationSettings.AppSettings["Auth"];
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -33,7 +37,7 @@ namespace mServerProject
         {
             try
             {
-                return _brandService.GetBrandDetails(brandId);                
+                return _brandService.GetBrandDetails(brandId, url, auth);
             }
             catch (Exception ex)
             {

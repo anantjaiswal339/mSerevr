@@ -2,6 +2,7 @@
 using mServerWeb.Core.Services.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
@@ -17,19 +18,20 @@ namespace mServerProject
         {
             get { return campaignService ?? (campaignService = new CampaignService()); }
         }
+        private static string url = ConfigurationSettings.AppSettings["Url"];
+        private static string auth = ConfigurationSettings.AppSettings["Auth"];
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
 
         [WebMethod]
-        public static string BindCampaignDetails(string campaignId)
+        public static object BindCampaignDetails(string campaignId)
         {
             try
             {
-                string resbrd = _campaignService.GetCampaignDetails(campaignId);
-
-                return resbrd;
+                return _campaignService.GetCampaignDetails(campaignId, url, auth);
             }
             catch (Exception ex)
             {

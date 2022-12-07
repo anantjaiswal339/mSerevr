@@ -2,6 +2,7 @@
 using mServerWeb.Core.Services;
 using mServerWeb.Core.Services.Interfaces;
 using System;
+using System.Configuration;
 using System.Data;
 using System.Web.DynamicData;
 using System.Xml.Linq;
@@ -16,6 +17,8 @@ namespace mServerProject
         {
             get { return brandService ?? (brandService = new BrandService()); }
         }
+        private static string url = ConfigurationSettings.AppSettings["Url"];
+        private static string auth = ConfigurationSettings.AppSettings["Auth"];
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (!IsPostBack)
@@ -51,7 +54,7 @@ namespace mServerProject
 
                 };
 
-                var response = _brandService.AddBrand(req);
+                var response = _brandService.AddBrand(req, url, auth);
                 if (response.StatusCode == 200)
                     Response.Redirect("Brands");
 

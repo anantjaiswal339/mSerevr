@@ -210,8 +210,9 @@
                 data: JSON.stringify({ "brandId": brandId }),
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
-                    if (data != undefined && data != "") {
-                        var jsondata = JSON.parse(JSON.parse(data.d));
+                    console.log(data)
+                    if (data.d.StatusCode == 200) {
+                        var jsondata = data.d.Data;
                         if (jsondata != null && jsondata != undefined && jsondata != "") {
                             $("#divbrddt").show();
                             $("#lblcmpname").text(jsondata.name);
@@ -233,8 +234,7 @@
                         }
                     }
                     else {
-                        $("#lblmsg").text("No data found.");
-                        $("#divbrddt").hide();
+                        strdata += "<tr><td colspan='2'>No data found.</td></tr>";
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
