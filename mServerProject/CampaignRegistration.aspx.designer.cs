@@ -15,6 +15,15 @@ namespace mServerProject
     {
 
         /// <summary>
+        /// ltrError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltrError;
+
+        /// <summary>
         /// ddlBrand control.
         /// </summary>
         /// <remarks>
@@ -166,6 +175,15 @@ namespace mServerProject
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSupportMessage;
+
+        /// <summary>
+        /// chkBillingDetail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox chkBillingDetail;
 
         /// <summary>
         /// btnSubmit control.

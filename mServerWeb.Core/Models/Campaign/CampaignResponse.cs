@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace mServerWeb.Core.Models
+namespace mServerWeb.Core.Models.Campaign
 {
     public class CampaignResponse
     {

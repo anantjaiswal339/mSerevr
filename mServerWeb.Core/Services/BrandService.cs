@@ -40,7 +40,7 @@ namespace mServerWeb.Core.Services
                     }
                     else
                     {
-                        response.Error = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+                        response.Error = httpResponse.Content.ReadAsStringAsync().GetAwaiter().GetResult();                                              
                     }
                 }
                 return response;

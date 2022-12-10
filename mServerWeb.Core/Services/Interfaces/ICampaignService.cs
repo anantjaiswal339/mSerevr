@@ -1,4 +1,5 @@
 ﻿using mServerWeb.Core.Models;
+using mServerWeb.Core.Models.Campaign;
 using System.Collections.Generic;
 
 namespace mServerWeb.Core.Services.Interfaces

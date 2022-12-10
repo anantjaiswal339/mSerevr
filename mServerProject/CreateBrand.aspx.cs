@@ -1,9 +1,14 @@
 ﻿using mServerWeb.Core.Models;
 using mServerWeb.Core.Services;
 using mServerWeb.Core.Services.Interfaces;
+using Newtonsoft.Json;
 using System;
+using System.Collections;
 using System.Configuration;
 using System.Data;
+using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Web.DynamicData;
 using System.Xml.Linq;
 
@@ -43,7 +48,7 @@ namespace mServerProject
                         State = txtState.Text,
                         ZipCode = txtZipCode.Text
                     },
-                    AlternateBusinessId = new AlternateBusinessId { Id="590900O3Z29E78HVXT56", Type="LEI" },
+                    AlternateBusinessId = new AlternateBusinessId { Id = "590900O3Z29E78HVXT56", Type = "LEI" },
                     CountryCode = ddlCountry.Text,
                     SupportEmail = txtEmail.Text,
                     LegalName = txtLegalName.Text,
@@ -58,10 +63,29 @@ namespace mServerProject
                 if (response.StatusCode == 201)
                     Response.Redirect("Brands");
 
+                StringBuilder strErrors = new StringBuilder();
+                var brandAPIError = JsonConvert.DeserializeObject<BrandAPIErrorModel>(response.Error);
+                if (brandAPIError != null)
+                {
+                    var errorModel = brandAPIError.requestError.serviceException.validationErrors;
+                    var dict = errorModel.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).ToDictionary(prop => prop.Name, prop => (object)prop.GetValue(errorModel, null));
+                    foreach (var item in dict)
+                    {
+                        strErrors.Append("<b>" + item.Key + "</b>:<br/>");
+                        string[] values = ((IEnumerable)item.Value).Cast<object>()
+                             .Select(x => x.ToString())
+                             .ToArray();
+
+                        strErrors.Append(string.Join("<br>", values));
+                        strErrors.Append("<br>");
+                    }
+                    ltrError.Visible = true;
+                }
+                ltrError.Text = strErrors.ToString();
             }
             catch (Exception ex)
             {
-                
+                ltrError.Text = "Something went wrong!";
             }
         }
     }

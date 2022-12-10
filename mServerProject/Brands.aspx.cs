@@ -1,5 +1,4 @@
-﻿using mServerWeb.Core.Models;
-using mServerWeb.Core.Services;
+﻿using mServerWeb.Core.Services;
 using mServerWeb.Core.Services.Interfaces;
 using Newtonsoft.Json;
 using System;
@@ -31,7 +30,7 @@ namespace mServerProject
         {
             if (!IsPostBack)
             {
-                //BindBrand();
+
             }
 
         }
@@ -39,42 +38,8 @@ namespace mServerProject
         [WebMethod]
         public static object GetBrands()
         {
-            var brands = _brandService.GetBrands(url, auth);
-            if (brands.StatusCode == 200)
-            {
-                return brands;
-            }
-            string resbrd = _brandService.GetBrandsJson(url, auth);
-            return resbrd;
-        }
-
-        protected void BindBrand()
-        {
-            try
-            {
-                string resbrd = _brandService.GetBrandsJson(url, auth);
-                Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(resbrd);
-
-                //var resbrd = _brandService.GetBrands();
-                if (myDeserializedClass != null && myDeserializedClass.results.Count > 0)
-                {
-                    string json = JsonConvert.SerializeObject(myDeserializedClass);
-                    //DataTable dt = JsonConvert.DeserializeObject<DataTable>(dyobj);
-                    System.Data.DataTable dt = Newtonsoft.Json.JsonConvert.DeserializeObject<System.Data.DataTable>(json);
-
-                    //DataTable dt = (DataTable)JsonConvert.DeserializeObject(json, (typeof(DataTable)));
-                    //gv.DataSource = dt;
-                    //gv.DataBind();
-                }
-                else
-                {
-                    //gv.DataSource = null;
-                    //gv.DataBind();
-                }
-            }
-            catch (Exception ex)
-            {
-            }
+           return _brandService.GetBrands(url, auth);
+           
         }
 
         // remove "this" if not on C# 3.0 / .NET 3.5

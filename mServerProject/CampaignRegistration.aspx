@@ -141,6 +141,9 @@
     <div class="container">
         <div class="row martop">
             <div class="col-md-12 offset-md-2">
+                <div class="alert alert-danger" role="alert">
+                    <asp:Literal runat="server" Visible="false" ID="ltrError"></asp:Literal>
+                </div>
                 <div class="bd-example" data-example-id="">
                     <div id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="card">
@@ -205,14 +208,14 @@
 
                                         <div class="form-group col-md-6 col-sm-6">
                                             <label for="years">Message Type *</label>
-                                            <asp:DropDownList ></asp:DropDownList>
+                                            <asp:DropDownList></asp:DropDownList>
                                             <asp:ListBox runat="server" ID="lblMessageType" SelectionMode="multiple" CssClass="form-control">
                                                 <asp:ListItem Text="SMS" Value="SMS" />
                                                 <asp:ListItem Text="MMS" Value="MMS" />
                                             </asp:ListBox>
                                         </div>
-                                         <div class="form-group col-md-6 col-sm-6">
-                                            <label for="years">Numbers *</label>                                            
+                                        <div class="form-group col-md-6 col-sm-6">
+                                            <label for="years">Numbers *</label>
                                             <asp:ListBox runat="server" ID="lstNumbers" SelectionMode="multiple" CssClass="form-control">
                                                 <asp:ListItem Text="SMS" Value="SMS" />
                                                 <asp:ListItem Text="MMS" Value="MMS" />
@@ -324,10 +327,26 @@
                         </div>
 
                     </div>
+                    <div class="panel panel-default setup-content">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Billing Details</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <asp:CheckBox runat="server" required ID="chkBillingDetail" ValidationGroup="createcampaign" Text="&nbsp; I agree to make a one-time, non-refundable payment of $4.00 to register this brand. It will be added to your next balance" />
+                                        <%--<asp:RequiredFieldValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="chkBillingDetail" ValidationGroup="createcampaign" SetFocusOnError="true" ForeColor="Red" ErrorMessage="Please check this box"></asp:RequiredFieldValidator>--%>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group col-md-12 col-sm-12">
                         <div class="text-right">
-                            <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
-                            <%--<button class="btn btn-large btn-danger" type="button">Cancel </button>--%>
+                            <asp:Button runat="server" ID="btnSubmit" ValidationGroup="createcampaign" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
+                            <button class="btn btn-large btn-danger" type="reset">Cancel </button>
                         </div>
                     </div>
                 </div>
@@ -336,18 +355,22 @@
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            $('input[type="radio"]').click(function () {
+        $(document).ready(function ()
+        {
+            $('input[type="radio"]').click(function ()
+            {
                 $('#divKeyword').hide();
                 $('#divUrl').hide();
                 $('#MainContent_txtKeyword').prop('required', false);
                 $('#MainContent_txtUrl').prop('required', false);
 
-                if ($(this).attr('value') == 'Keyword') {
+                if ($(this).attr('value') == 'Keyword')
+                {
                     $('#divKeyword').show();
                     $('#MainContent_txtKeyword').prop('required', true);
                 }
-                if ($(this).attr('value') == 'Website') {
+                if ($(this).attr('value') == 'Website')
+                {
                     $('#divUrl').show();
                     $('#MainContent_txtUrl').prop('required', true);
                 }

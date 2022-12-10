@@ -5,19 +5,19 @@ using System.Text;
 namespace mServerWeb.Core.Models
 {
     // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
-    public class Address1
-    {
-        public string city { get; set; }
-        public string state { get; set; }
-        public string street { get; set; }
-        public string zipCode { get; set; }
-    }
+    //public class Address
+    //{
+    //    public string city { get; set; }
+    //    public string state { get; set; }
+    //    public string street { get; set; }
+    //    public string zipCode { get; set; }
+    //}
 
-    public class AlternateBusinessId1
-    {
-        public string id { get; set; }
-        public string type { get; set; }
-    }
+    //public class AlternateBusinessId
+    //{
+    //    public string id { get; set; }
+    //    public string type { get; set; }
+    //}
 
     public class Paging
     {
@@ -32,8 +32,8 @@ namespace mServerWeb.Core.Models
         public string id { get; set; }
         public string referenceId { get; set; }
         public string type { get; set; }
-        public Address1 address { get; set; }
-        public AlternateBusinessId1 alternateBusinessId { get; set; }
+        public Address address { get; set; }
+        public AlternateBusinessId alternateBusinessId { get; set; }
         public string countryCode { get; set; }
         public DateTime createdDate { get; set; }
         public string supportEmail { get; set; }

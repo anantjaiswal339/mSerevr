@@ -82,6 +82,11 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="alert alert-danger" role="alert">
+                                    <asp:Literal runat="server" ID="ltrError" Visible="false"></asp:Literal>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Name *</label>
@@ -163,7 +168,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Tax Id *</label>
-                                    <asp:TextBox runat="server" ID="txtTax" class="form-control" MaxLength="21" required></asp:TextBox>
+                                    <asp:TextBox runat="server" ID="txtTax" class="form-control" ValidationGroup="createbrand" MaxLength="21" required></asp:TextBox>
+                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                        ControlToValidate="txtTax" ValidationGroup="createbrand" SetFocusOnError="true" ForeColor="Red" ErrorMessage="Tax Id must contain a valid US EIN (in the form 99-9999999)" ValidationExpression="[0-9]{2}-[0-9]{7}"></asp:RegularExpressionValidator>
                                 </div>
                             </div>
 
@@ -192,8 +199,8 @@
                     </div>
                 </div>
                 <div class="text-right">
-                    <asp:Button runat="server" ID="btnSubmit" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
-                    <button type="reset" class="btn btn-danger"> Cancel</button>                    
+                    <asp:Button runat="server" ValidationGroup="createbrand" ID="btnSubmit" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
+                    <button type="reset" class="btn btn-danger">Cancel</button>
                 </div>
             </div>
 

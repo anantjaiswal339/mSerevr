@@ -7,10 +7,11 @@ using System;
 using System.Net.Http.Headers;
 using System.Net.Http;
 using System.Text;
+using mServerWeb.Core.Models.Campaign;
 
 namespace mServerWeb.Core.Services
 {
-	public class CampaignService : ICampaignService
+    public class CampaignService : ICampaignService
     {
         public MServerResponse<CampaignResponse> AddCampaign(CampaignRequest req, string url, string auth)
         {
@@ -47,8 +48,8 @@ namespace mServerWeb.Core.Services
             }
 			catch (Exception ex)
 			{
-				throw ex;
-			}
+                ltrError.Text = "Something went wrong!";
+            }
         }
 
         public MServerResponse<CamRoot> GetCampaignJson(string url, string auth)

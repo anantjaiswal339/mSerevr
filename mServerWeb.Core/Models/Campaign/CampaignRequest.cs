@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace mServerWeb.Core.Models
+namespace mServerWeb.Core.Models.Campaign
 {
     public class CampaignRequest
     {
